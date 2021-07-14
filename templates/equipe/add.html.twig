@@ -1,19 +1,2 @@
 <h1>ajouter equipe</h1>
 {{ form(formajouter) }}
-<h1>afiichage equipe</h1>
-<table border="1">
-    <tr>
-        <th>Id</th>
-        <th>Nom</th>
-        <th>Classe</th>
-        <th>Projet</th>
-    </tr>
-    {% for Equipe in listesequipes %}
-        <tr>
-            <td>{{ Equipe.Id }}</td>
-            <td>{{ Equipe.nom }}</td>
-            <td>{{ Equipe.classe }}</td>
-            <td>{{ Equipe.Projet.Id }}</td>
-        </tr>
-    {% endfor %}
-</table>

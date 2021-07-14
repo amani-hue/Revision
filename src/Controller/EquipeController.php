@@ -23,14 +23,14 @@ class EquipeController extends AbstractController
     /**
      * @Route("/addequipe", name="addequipe")
      */
-    public function add(EquipeRepository $repository,Request $request)
+    public function add(Request $request)
     {
-        $listesequipes=$repository->findAll();
+
         $equipe = new Equipe();
 
         $form = $this->createForm(EquipeformType::class, $equipe);
 
-        $form->handleRequest($request);
+
         if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($equipe);
@@ -39,5 +39,14 @@ class EquipeController extends AbstractController
             return $this->redirectToRoute("addequipe");
         }
         return $this->render("equipe/add.html.twig", array("formajouter" => $form->createView()));
+    }
+    /**
+     * @Route("/liste", name="liste")
+     */
+    public function liste(Request $req)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $equipes= $entityManager->getRepository(Equipe::class)->findAll();
+        return $this->render('equipe/liste.html.twig', array('equipes' => $equipes));
     }
 }

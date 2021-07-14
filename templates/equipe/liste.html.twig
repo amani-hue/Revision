@@ -1,0 +1,17 @@
+<h1>listes equipes</h1>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Classe</th>
+    </tr>
+    {% for Equipe in equipes %}
+        <tr>
+            <td>{{ Equipe.Id }}</td>
+            <td>{{ Equipe.nom }}</td>
+            <td>{{ Equipe.classe }}</td>
+
+        </tr>
+    {% endfor %}
+</table>
